@@ -1,0 +1,27 @@
+---
+title: "book store survey"
+output: html_notebook
+---
+
+```{r setup}
+library(readxl)
+
+Book1 <- read_excel("Book1.xlsx", sheet = "Sheet2", range = "a1:b21")
+
+x = c(Book1$Males)
+y = c(Book1$Females)
+```
+# Test if any differences for expenditures between males and females  
+## assumption  
+H0: Central position for two groups are identical  
+H1: not H0
+significant level: 5%
+
+```{r}
+wilcox.test(x, y, paired = F, correct = F)
+```
+P is greater than 5%.  
+H0 is not rejected.
+
+## conclusion  
+No difference for expenditures between males and females.
